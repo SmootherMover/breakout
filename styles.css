@@ -1,10 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@500&family=Press+Start+2P&display=swap');
+
 body{
     display: flex;
+    flex-direction: column;
     height: 100vh;
     margin: 0; 
     padding: 0;
     justify-content: center;
     align-items: center;
+}
+
+h1{
+    font-family: "Press Start 2P";
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
 }
 
 /* #defaultCanvas0{

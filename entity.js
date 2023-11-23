@@ -10,5 +10,6 @@ class Entity{
         fill("white");
 		rect(this.x, this.y, this.width, this.height);
 	}
+	
     
 }
