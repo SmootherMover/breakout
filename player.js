@@ -9,12 +9,25 @@ class Player{
        this.height = height;
     }
     control(){
-        if (keyIsDown(LEFT_ARROW) && this.x > 0) {
-			this.x -= SPEED;
-		}
-		if (keyIsDown(RIGHT_ARROW) && this.x < width - PLAYERWIDTH) {
-			this.x += SPEED;
-		}
+
+        if(this.x > 0 && this.x < width - PLAYERWIDTH){
+            this.x = mouseX - PLAYERWIDTH/2;
+        }
+        
+        if(this.x < 0){
+            this.x = 2;
+        }
+        if(this.x > width - PLAYERWIDTH){
+            this.x = width - PLAYERWIDTH - 2;
+        
+        };
+
+        // if (keyIsDown(LEFT_ARROW) && this.x > 0) {
+		// 	this.x -= SPEED;
+		// }
+		// if (keyIsDown(RIGHT_ARROW) && this.x < width - PLAYERWIDTH) {
+		// 	this.x += SPEED;
+		// }
     }
     draw() {
         fill("red");

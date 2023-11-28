@@ -1,40 +1,41 @@
-let angle = 0;
-
 class Ball{
-    constructor(x, y, size, xSpeed, ySpeed, angle){
+    constructor(x, y, size, magnitude, angle){
         this.x = x;
         this.y = y;
         this.size = size;
-        this.xSpeed = xSpeed;
-        this.ySpeed = ySpeed;
         this.angle = angle;
+        this.magnitude = magnitude;
+        this.xVelocity = this.magnitude * Math.cos(this.angle);
+        this.yVelocity = this.magnitude * Math.sin(this.angle);
+
+    
     }
     draw(){
 		fill("white");
 		circle(this.x, this.y, this.size);
     }
     update(){
-        this.x += this.xSpeed * cos(this.angle);
-		this.y += this.ySpeed * sin(this.angle);
-		if (this.x > 0) {
-			this.xSpeed *= -1;
+        this.x += this.xVelocity;
+		this.y += this.yVelocity;
+		if (this.x - this.size/2 > 0) {
+			this.xVelocity *= -1;
 		}
-		if (this.x < width) {
-			this.xSpeed *= -1;
+		if (this.x + this.size/2 < width) {
+			this.xVelocity *= -1;
 		}
-		if (this.y < 0) {
-			this.ySpeed *= -1;
+		if (this.y - this.size/2 < 0) {
+			this.yVelocity *= -1;
 		}
-		if (this.y > height) {
-			this.ySpeed *= -1;
+		if (this.y + this.size/2 > height) {
+			this.yVelocity *= -1;
 		}
     }
     checkCollisions(other){
-        if(this.y > other.y && this.y < other.y + other.height && this.x > other.x  && this.x < other.x + other.width){
-            return true;
-        }else{
-            return false;
+            if(this.y > other.y && this.y  < other.y + other.height && this.x > other.x  && this.x  < other.x + other.width){
+                return true;
+            }else{
+                return false;
+            }
         }
-        
-    }
+
 };

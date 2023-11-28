@@ -10,12 +10,5 @@ class Block{
         fill("white");
 		rect(this.x, this.y, this.width, this.height);
 	}
-    checkCollisions(other){
-        if(this.y > other.y && this.x > other.x  && this.x < other.x + other.width){
-            return true;
-        }else{
-            return false;
-        }
-        
-    }
+
 };

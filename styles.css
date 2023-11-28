@@ -10,11 +10,24 @@ body{
     align-items: center;
 }
 
-h1{
+p{
     font-family: "Press Start 2P";
     font-style: normal;
     font-weight: 400;
     font-display: swap;
+    font-size: 25px;
+}
+
+div{
+    display: flex;
+    justify-content: flex-end;
+    
+}
+
+#score{
+    color: red;
+    margin-left: 100px;
+
 }
 
 /* #defaultCanvas0{
