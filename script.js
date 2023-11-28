@@ -15,7 +15,7 @@ function setup() {
     let randX = random(width);
     let randY = random(height);
     player = new Player(width/2 - PLAYERWIDTH/2, height - 50, PLAYERWIDTH, 10);
-    ball = new Ball(randX, randY, 20, 5, Math.PI/4);
+    ball = new Ball(randX, randY, 20, 5, 100);
     for (let i = 0; i < 8; i++) {
         block.push(new Block(15 + 110 * i , 200, 100, 20));
         block.push(new Block(15 + 110 * j , 170, 100, 20));
@@ -36,15 +36,14 @@ function draw() {
     ball.draw();
     ball.update();
     if(ball.checkCollisions(player)){
-        ball.xVelocity *= -1;
-        ball.yVelocity *= -1;
+        ball.angle = angleReflect(ball.angle, 0);
     };
 
     for(let i = 0; i < block.length; i++){
         block[i].draw();
         if(ball.checkCollisions(block[i])){
-            ball.xVelocity *= -1;
-            ball.yVelocity *= -1;
+            ball.angle = angleReflect(ball.angle, 0);
+    
             block.splice(i,1);
         };
        
