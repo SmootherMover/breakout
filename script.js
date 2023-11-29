@@ -2,8 +2,6 @@ let player;
 let ball;
 let block = [];
 let score = 0;
-let j = 0;
-let k = 0;
 
 function angleReflect(incidenceAngle, surfaceAngle){
     var a = surfaceAngle * 2 - incidenceAngle;
@@ -12,15 +10,14 @@ function angleReflect(incidenceAngle, surfaceAngle){
 
 function setup() {
 	createCanvas(900, 600);
-    let randX = random(width);
-    let randY = random(height);
     player = new Player(width/2 - PLAYERWIDTH/2, height - 50, PLAYERWIDTH, 10);
-    ball = new Ball(randX, randY, 20, 5, 100);
+    ball = new Ball(450, 400, 20, 5, 100);
     for (let i = 0; i < 8; i++) {
         block.push(new Block(15 + 110 * i , 200, 100, 20));
-        block.push(new Block(15 + 110 * j , 170, 100, 20));
-        block.push(new Block(15 + 110 * k , 140, 100, 20));
-        j++; k++;
+        block.push(new Block(15 + 110 * i , 170, 100, 20));
+        block.push(new Block(15 + 110 * i , 140, 100, 20));
+        block.push(new Block(15 + 110 * i , 110, 100, 20));
+      
     }
     // for (let j = 0; j < 8; j++) {
     //     block.push(new Block(15 + 110 * j , 170, 100, 20));
@@ -45,10 +42,12 @@ function draw() {
             ball.angle = angleReflect(ball.angle, 0);
     
             block.splice(i,1);
+            ball.magnitude += 0.1;
+            score ++;
         };
-       
     }
-    
+    document.getElementById("score").innerHTML = "SCORE:" + score;
+
 }
 
 
