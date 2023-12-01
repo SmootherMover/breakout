@@ -11,14 +11,14 @@ function angleReflect(incidenceAngle, surfaceAngle){
 
 function setup() {
 	createCanvas(900, 600);
-    menu = new GameState(0, 0, 900 , 600);
     player = new Player(width/2 - PLAYERWIDTH/2, height - 50, PLAYERWIDTH, 10);
     ball = new Ball(450, 400, 20, 5, 100);
     for (let i = 0; i < 8; i++) {
-        block.push(new Block(15 + 110 * i , 200, 100, 20));
-        block.push(new Block(15 + 110 * i , 170, 100, 20));
-        block.push(new Block(15 + 110 * i , 140, 100, 20));
-        block.push(new Block(15 + 110 * i , 110, 100, 20));
+        block.push(new Block(15 + 110 * i , 200, 100, 20, "blue"));
+        block.push(new Block(15 + 110 * i , 170, 100, 20, "red"));
+        block.push(new Block(15 + 110 * i , 140, 100, 20, "green"));
+        block.push(new Block(15 + 110 * i , 110, 100, 20, "yellow"));
+        block.push(new Block(15 + 110 * i , 80 , 100, 20, "orange"));
       
     }
   
@@ -27,11 +27,9 @@ console.log(block.length);
 }
 
 function draw() {
-    background(0)
-    menu.draw();
-    if(start == true){
-    player.draw();
-    player.control();
+    background(0);
+    // player.draw();
+    // player.control();
     ball.draw();
     ball.update();
     if(ball.checkCollisions(player)){
@@ -47,9 +45,9 @@ function draw() {
             score ++;
         };
     }
-    document.getElementById("titlebar").innerHTML = '<p>BREAKOUT</p><p id="score">SCORE:</p>';
+    document.getElementById("titlebar").innerHTML = `<p>BREAKOUT</p><p id="score">SCORE: ${score}</p>`;
     }
-}
+
 
 
 
