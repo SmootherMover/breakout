@@ -28,9 +28,12 @@ class Ball{
 		if (this.y - this.size/2 < 0) {
             this.angle = angleReflect(this.angle, 0);
 		}
-		if (this.y + this.size/2 > height) {
-			this.angle = angleReflect(this.angle, 0);
-		}
+		// if (this.y + this.size/2 > height) {
+		// 	this.angle = angleReflect(this.angle, 0);
+		// }
+        if (this.y > height){
+            gameover = true;
+        }
     }
     checkCollisions(other){
             if(this.y > other.y && this.y  < other.y + other.height && this.x > other.x  && this.x  < other.x + other.width){
